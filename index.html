@@ -20,47 +20,22 @@ body {
     overflow: hidden;
     position: relative;
 }
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+@keyframes gradientMove { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
 
 /* Floating circles background */
-.bg-circle {
-    position: absolute;
-    border-radius: 50%;
-    opacity: 0.2;
-    animation: float 12s ease-in-out infinite;
-}
-.circle1 { width: 160px; height: 160px; background: #3b82f6; top: 15%; left: 10%; animation-delay: 0s; }
-.circle2 { width: 120px; height: 120px; background: #facc15; bottom: 10%; right: 8%; animation-delay: 2s; }
-.circle3 { width: 200px; height: 200px; background: #10b981; top: 60%; left: 70%; animation-delay: 4s; }
+.bg-circle { position:absolute;border-radius:50%;opacity:0.2;animation:float 12s ease-in-out infinite;}
+.circle1 { width:160px;height:160px;background:#3b82f6;top:15%;left:10%;animation-delay:0s;}
+.circle2 { width:120px;height:120px;background:#facc15;bottom:10%;right:8%;animation-delay:2s;}
+.circle3 { width:200px;height:200px;background:#10b981;top:60%;left:70%;animation-delay:4s;}
+@keyframes float {0%,100%{transform:translateY(0);}50%{transform:translateY(-25px);}}
 
-@keyframes float {
-    0%,100% { transform: translateY(0); }
-    50% { transform: translateY(-25px); }
-}
+/* Loader */
+.loader { position:absolute;font-size:22px;font-weight:bold;color:#1e3a8a;opacity:0;animation:fadeInOut 2.5s ease forwards; }
+@keyframes fadeInOut { 0%{opacity:0;}40%{opacity:1;}100%{opacity:0;} }
 
-/* Loading intro */
-.loader {
-    position: absolute;
-    font-size: 22px;
-    font-weight: bold;
-    color: #1e3a8a;
-    opacity: 0;
-    animation: fadeInOut 2.5s ease forwards;
-}
-@keyframes fadeInOut {
-    0% { opacity: 0; }
-    40% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-/* Quiz box */
+/* Quiz container */
 .quiz-container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255,255,255,0.95);
     backdrop-filter: blur(20px);
     padding: 35px 40px;
     border-radius: 25px;
@@ -69,202 +44,60 @@ body {
     width: 90%;
     text-align: center;
     position: relative;
-    z-index: 2;
-    transform: translateY(40px);
-    opacity: 0;
-    animation: slideUp 1s 2.5s forwards;
+    z-index:2;
+    transform:translateY(40px);
+    opacity:0;
+    animation:slideUp 1s 2.5s forwards;
 }
-@keyframes slideUp {
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes slideUp { to{opacity:1; transform:translateY(0);} }
 
-h1 {
-    color: #1e3a8a;
-    font-size: 32px;
-    margin-bottom: 12px;
-    text-shadow: 0 0 8px rgba(59,130,246,0.4);
-}
-h1::after {
-    content: "";
-    display: block;
-    height: 4px;
-    width: 80px;
-    background: linear-gradient(90deg, #3b82f6, #06b6d4);
-    margin: 10px auto 25px;
-    border-radius: 3px;
-    animation: pulseGlow 2s infinite alternate;
-}
-@keyframes pulseGlow {
-    from { box-shadow: 0 0 5px #3b82f6; }
-    to { box-shadow: 0 0 15px #06b6d4; }
-}
+h1 { color:#1e3a8a;font-size:32px;margin-bottom:12px;text-shadow:0 0 8px rgba(59,130,246,0.4);}
+h1::after { content:""; display:block; height:4px; width:80px; background:linear-gradient(90deg,#3b82f6,#06b6d4); margin:10px auto 25px; border-radius:3px; animation:pulseGlow 2s infinite alternate;}
+@keyframes pulseGlow { from{box-shadow:0 0 5px #3b82f6;} to{box-shadow:0 0 15px #06b6d4;} }
 
 /* Progress bar */
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background: #e0f2fe;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 20px;
-}
-#progress {
-    height: 100%;
-    width: 0;
-    background: linear-gradient(90deg, #3b82f6, #06b6d4);
-    transition: width 0.5s ease;
-}
+.progress-bar { width:100%; height:8px; background:#e0f2fe; border-radius:10px; overflow:hidden; margin-bottom:20px; }
+#progress { height:100%; width:0; background:linear-gradient(90deg,#3b82f6,#06b6d4); transition:width 0.5s ease; }
 
-.question-number {
-    color: #2563eb;
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 17px;
-}
-.question {
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 25px;
-    color: #1e293b;
-    animation: fadeSlide 0.6s ease;
-}
-@keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* Question styling */
+.question-number { color:#2563eb;font-weight:bold;margin-bottom:8px;font-size:17px; }
+.question { font-weight:700;font-size:20px;margin-bottom:25px;color:#1e293b; animation:fadeSlide 0.6s ease;}
+@keyframes fadeSlide { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:translateY(0);} }
 
 .options button {
-    display: block;
-    margin: 10px 0;
-    width: 100%;
-    padding: 14px;
-    font-size: 16px;
-    background: #3b82f6;
-    color: #fff;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba(59,130,246,0.3);
+    display:block;margin:10px 0;width:100%;padding:14px;font-size:16px;
+    background:#3b82f6;color:#fff;border:none;border-radius:14px;cursor:pointer;
+    transition:all 0.3s ease;box-shadow:0 5px 15px rgba(59,130,246,0.3);
 }
-.options button:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(59,130,246,0.5);
-}
-.options button.correct {
-    background: #10b981 !important;
-    box-shadow: 0 5px 15px rgba(16,185,129,0.5);
-    transform: scale(1.05);
-}
-.options button.incorrect {
-    background: #ef4444 !important;
-    box-shadow: 0 5px 15px rgba(239,68,68,0.4);
-    transform: scale(1.05);
-}
+.options button:hover { transform:translateY(-4px) scale(1.03); box-shadow:0 8px 25px rgba(59,130,246,0.5);}
+.options button.correct { background:#10b981 !important; box-shadow:0 5px 15px rgba(16,185,129,0.5); transform:scale(1.05);}
+.options button.incorrect { background:#ef4444 !important; box-shadow:0 5px 15px rgba(239,68,68,0.4); transform:scale(1.05); }
 
-#nextBtn {
-    margin-top: 25px;
-    background: #10b981;
-    padding: 14px;
-    border: none;
-    border-radius: 14px;
-    cursor: pointer;
-    font-size: 17px;
-    color: #fff;
-    width: 100%;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(16,185,129,0.4);
-}
-#nextBtn:hover:not(:disabled) {
-    transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 8px 25px rgba(16,185,129,0.6);
-}
-#nextBtn:disabled {
-    background: #a7f3d0;
-    cursor: not-allowed;
-    box-shadow: none;
-}
+#nextBtn { margin-top:25px;background:#10b981;padding:14px;border:none;border-radius:14px;cursor:pointer;font-size:17px;width:100%; transition:all 0.3s ease;box-shadow:0 6px 20px rgba(16,185,129,0.4);}
+#nextBtn:hover:not(:disabled){ transform:translateY(-3px) scale(1.03); box-shadow:0 8px 25px rgba(16,185,129,0.6);}
+#nextBtn:disabled { background:#a7f3d0; cursor:not-allowed; box-shadow:none; }
 
-.score, .percentage {
-    font-size: 24px;
-    margin-top: 25px;
-    font-weight: bold;
-    color: #047857;
-    opacity: 0;
-    animation: popIn 1s forwards;
-}
-@keyframes popIn {
-    0% { opacity: 0; transform: scale(0.8); }
-    100% { opacity: 1; transform: scale(1); }
-}
+.score, .percentage { font-size:24px;margin-top:25px;font-weight:bold;color:#047857;opacity:0; animation:popIn 1s forwards;}
+@keyframes popIn {0%{opacity:0; transform:scale(0.8);}100%{opacity:1; transform:scale(1);} }
 
-footer {
-    margin-top: 25px;
-    font-size: 14px;
-    color: #1e3a8a;
-}
-footer a {
-    color: #3b82f6;
-    text-decoration: none;
-    font-weight: bold;
-}
+footer { margin-top:25px; font-size:14px; color:#1e3a8a; }
+footer a { color:#3b82f6; text-decoration:none; font-weight:bold; }
 
 /* Floating logos */
-.circle-logo {
-    position: fixed;
-    bottom: 20px;
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    overflow: hidden;
-    background-color: white;
-    border: 2px solid rgba(59,130,246,0.3);
-    box-shadow: 0 0 15px rgba(59,130,246,0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    z-index: 3;
-}
-.circle-logo:hover {
-    transform: scale(1.12) rotate(3deg);
-    box-shadow: 0 0 25px rgba(59,130,246,0.8), 0 0 40px rgba(16,185,129,0.5);
-}
-.circle-logo img { width: 100%; height: 100%; object-fit: cover; }
-.kite-logo { right: 20px; }
-.chi-logo { left: 20px; }
-.asad-logo { left: 110px; }
-
-/* Confetti */
-#confetti-canvas {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 999;
-}
-
-/* Floating AI icons */
-.floating-icon {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    opacity: 0.15;
-    animation: float 8s ease-in-out infinite;
-}
+.circle-logo { position:fixed; bottom:20px; width:75px; height:75px; border-radius:50%; overflow:hidden; background-color:white; border:2px solid rgba(59,130,246,0.3); box-shadow:0 0 15px rgba(59,130,246,0.3); transition: transform 0.3s ease, box-shadow 0.3s ease; cursor:pointer; z-index:3;}
+.circle-logo:hover { transform:scale(1.12) rotate(3deg); box-shadow:0 0 25px rgba(59,130,246,0.8),0 0 40px rgba(16,185,129,0.5);}
+.circle-logo img { width:100%; height:100%; object-fit:cover; }
+.kite-logo { right:20px; }
+.chi-logo { left:20px; }
+.asad-logo { left:110px; }
 </style>
 </head>
 <body>
 
 <div class="loader">✨ Loading Kite AI Quiz...</div>
-
 <div class="bg-circle circle1"></div>
 <div class="bg-circle circle2"></div>
 <div class="bg-circle circle3"></div>
-
-<img src="https://cdn-icons-png.flaticon.com/512/4712/4712027.png" class="floating-icon" style="top:25%; right:20%;">
-<img src="https://cdn-icons-png.flaticon.com/512/4712/4712063.png" class="floating-icon" style="bottom:15%; left:25%;">
-
-<canvas id="confetti-canvas"></canvas>
 
 <div class="quiz-container">
     <h1>Kite AI Quiz</h1>
@@ -276,8 +109,10 @@ footer a {
         <div class="options" id="options"></div>
         <button id="nextBtn" onclick="nextQuestion()" disabled>Next</button>
     </div>
+
     <div class="score" id="score" style="display:none;"></div>
     <div class="percentage" id="percentage" style="display:none;"></div>
+
     <footer>Made by <a href="https://x.com/asadleo416" target="_blank">Asad Lee</a></footer>
 </div>
 
@@ -293,92 +128,105 @@ footer a {
 </a>
 
 <script>
-const quizData = [ { q: "What is Kite AI?", a: ["A Layer-2 blockchain for AI agents", "A Layer-1 blockchain purpose-built for AI payments", "A decentralized AI model marketplace", "A cloud-based AI development platform"], correct: 1 }, { q: "Which consensus mechanism does Kite AI utilize?", a: ["Proof of Stake","Proof of Work","Proof of AI (PoAI)","Delegated Proof of Stake"], correct: 2 }, { q: "What is the primary function of Kite AI's multisig wallet?", a: ["To store NFTs","To enable multi-party control over funds","To facilitate cross-chain transactions","To mint new tokens"], correct: 1 }, { q: "Which blockchain is Kite AI built on?", a: ["Ethereum","Binance Smart Chain","Avalanche","Solana"], correct: 2 }, { q: "What is the native token of the Kite AI ecosystem?", a: ["KITE","AI","KAI","KAI-TOKEN"], correct: 0 }, { q: "What is the purpose of the Kite AIR platform?", a: ["To provide AI model training services","To offer a marketplace for AI agents","To serve as a launchpad for decentralized applications","To facilitate AI agent onboarding and management"], correct: 3 }, { q: "What is the significance of the 'Fly the Kite' NFT collection?", a: ["To reward early adopters and community contributors","To serve as a governance token","To represent AI agent identities","To provide access to premium features"], correct: 0 }, { q: "Which feature is NOT part of Kite AI's multisig wallet?", a: ["Multi-signer smart accounts","Optimized gas model","Agent-aware modules","LayerZero bridge guard"], correct: 2 }, { q: "What does the 'Proof of AI' (PoAI) consensus mechanism reward?", a: ["Computational power","Token staking","Actual AI work completion and impact","Transaction volume"], correct: 2 }, { q: "Which of the following is a core use case for Kite AI's multisig wallet?", a: ["Personal data storage","DAO and protocol treasury management","Social media integration","Video streaming"], correct: 1 }, { q: "How does Kite AI ensure agent identity and reputation?", a: ["Through centralized databases","By using cryptographic solutions","Via manual verification","Through social media profiles"], correct: 1 }, { q: "What is the primary advantage of Kite AI's EVM-compatible blockchain?", a: ["High transaction fees","Compatibility with existing Ethereum tools and infrastructure","Limited developer support","Slow transaction speeds"], correct: 1 }, { q: "Which of the following is a feature of Kite AI's agent-aware modules?", a: ["Pre-built modules for agent stipend streaming","Centralized data storage","Manual transaction approvals","Limited scalability"], correct: 0 }, { q: "What is the purpose of the LayerZero bridge in Kite AI?", a: ["To facilitate cross-chain transactions","To store AI models","To manage user identities","To monitor network health"], correct: 0 }, { q: "What is the significance of the testnet phases (Aero, Ozone, V3) for Kite AI?", a: ["To test different consensus mechanisms","To onboard new users","To build and test the infrastructure leading to mainnet launch","To distribute tokens to the community"], correct: 2 }, { q: "Which wallet feature helps prevent unauthorized fund transfer?", a: ["Multi-signature approval","Single signature approval","Random key generation","Manual override"], correct: 0 }, { q: "What type of token is KITE?", a: ["Utility token","Governance token","Stablecoin","NFT"], correct: 0 }, { q: "What ensures AI agents can make microtransactions instantly?", a: ["Stablecoins","Bank transfer","Manual approval","Email verification"], correct: 0 } ];
+// Quiz Data
+let quizData = [
+    { q:"What is Kite AI?", a:["A Layer-2 blockchain for AI agents","A Layer-1 blockchain purpose-built for AI payments","A decentralized AI model marketplace","A cloud-based AI development platform"], correct:1 },
+    { q:"Which consensus mechanism does Kite AI utilize?", a:["Proof of Stake","Proof of Work","Proof of AI (PoAI)","Delegated Proof of Stake"], correct:2 },
+    { q:"What is the primary function of Kite AI's multisig wallet?", a:["To store NFTs","To enable multi-party control over funds","To facilitate cross-chain transactions","To mint new tokens"], correct:1 },
+    { q:"Which blockchain is Kite AI built on?", a:["Ethereum","Binance Smart Chain","Avalanche","Solana"], correct:2 },
+    { q:"What is the native token of the Kite AI ecosystem?", a:["KITE","AI","KAI","KAI-TOKEN"], correct:0 },
+    { q:"What is the purpose of the Kite AIR platform?", a:["To provide AI model training services","To offer a marketplace for AI agents","To serve as a launchpad for decentralized applications","To facilitate AI agent onboarding and management"], correct:3 },
+    { q:"What is the significance of the 'Fly the Kite' NFT collection?", a:["To reward early adopters and community contributors","To serve as a governance token","To represent AI agent identities","To provide access to premium features"], correct:0 },
+    { q:"Which feature is NOT part of Kite AI's multisig wallet?", a:["Multi-signer smart accounts","Optimized gas model","Agent-aware modules","LayerZero bridge guard"], correct:2 },
+    { q:"What does the 'Proof of AI' (PoAI) consensus mechanism reward?", a:["Computational power","Token staking","Actual AI work completion and impact","Transaction volume"], correct:2 },
+    { q:"Which of the following is a core use case for Kite AI's multisig wallet?", a:["Personal data storage","DAO and protocol treasury management","Social media integration","Video streaming"], correct:1 },
+    { q:"How does Kite AI ensure agent identity and reputation?", a:["Through centralized databases","By using cryptographic solutions","Via manual verification","Through social media profiles"], correct:1 },
+    { q:"What is the primary advantage of Kite AI's EVM-compatible blockchain?", a:["High transaction fees","Compatibility with existing Ethereum tools and infrastructure","Limited developer support","Slow transaction speeds"], correct:1 },
+    { q:"Which of the following is a feature of Kite AI's agent-aware modules?", a:["Pre-built modules for agent stipend streaming","Centralized data storage","Manual transaction approvals","Limited scalability"], correct:0 },
+    { q:"What is the purpose of the LayerZero bridge in Kite AI?", a:["To facilitate cross-chain transactions","To store AI models","To manage user identities","To monitor network health"], correct:0 },
+    { q:"What is the significance of the testnet phases (Aero, Ozone, V3) for Kite AI?", a:["To test different consensus mechanisms","To onboard new users","To build and test the infrastructure leading to mainnet launch","To distribute tokens to the community"], correct:2 },
+    { q:"Which wallet feature helps prevent unauthorized fund transfer?", a:["Multi-signature approval","Single signature approval","Random key generation","Manual override"], correct:0 },
+    { q:"What type of token is KITE?", a:["Utility token","Governance token","Stablecoin","NFT"], correct:0 },
+    { q:"What ensures AI agents can make microtransactions instantly?", a:["Stablecoins","Bank transfer","Manual approval","Email verification"], correct:0 }
+];
 
-let currentQuestion = 0;
-let score = 0;
-let answered = false;
+// Shuffle questions
+quizData = quizData.sort(() => Math.random() - 0.5);
 
-function loadQuestion() {
-    answered = false;
-    const q = quizData[currentQuestion];
-    document.getElementById("question-number").innerText = `Question ${currentQuestion + 1} of ${quizData.length}`;
-    document.getElementById("question").innerText = q.q;
-    const optionsDiv = document.getElementById("options");
-    optionsDiv.innerHTML = "";
-    document.getElementById("nextBtn").disabled = true;
+let currentQuestion = 0, score = 0, answered=false;
+
+function loadQuestion(){
+    answered=false;
+    const q=quizData[currentQuestion];
+    document.getElementById("question-number").innerText=`Question ${currentQuestion+1} of ${quizData.length}`;
+    document.getElementById("question").innerText=q.q;
+    const optionsDiv=document.getElementById("options");
+    optionsDiv.innerHTML="";
+    document.getElementById("nextBtn").disabled=true;
     updateProgress();
-
-    q.a.forEach((option, i) => {
-        const button = document.createElement("button");
-        button.innerText = option;
-        button.onclick = () => selectAnswer(button, i);
-        optionsDiv.appendChild(button);
+    q.a.forEach((opt,i)=>{
+        const btn=document.createElement("button");
+        btn.innerText=opt;
+        btn.onclick=()=>selectAnswer(btn,i);
+        optionsDiv.appendChild(btn);
     });
 }
 
-function selectAnswer(button, index) {
-    if (answered) return;
-    answered = true;
-    const q = quizData[currentQuestion];
-    if (index === q.correct) {
-        button.classList.add("correct");
-        score++;
-    } else {
-        button.classList.add("incorrect");
-        document.querySelectorAll("#options button")[q.correct].classList.add("correct");
-    }
-    document.querySelectorAll("#options button").forEach(btn => btn.disabled = true);
-    document.getElementById("nextBtn").disabled = false;
+function selectAnswer(btn,index){
+    if(answered) return;
+    answered=true;
+    const q=quizData[currentQuestion];
+    if(index===q.correct){ btn.classList.add("correct"); score++; }
+    else { btn.classList.add("incorrect"); document.querySelectorAll("#options button")[q.correct].classList.add("correct"); }
+    document.querySelectorAll("#options button").forEach(b=>b.disabled=true);
+    document.getElementById("nextBtn").disabled=false;
 }
 
-function nextQuestion() {
+function nextQuestion(){
     currentQuestion++;
-    if (currentQuestion < quizData.length) {
-        loadQuestion();
-    } else {
-        showScore();
-    }
+    if(currentQuestion<quizData.length) loadQuestion();
+    else showScore();
 }
 
-function updateProgress() {
-    const percent = ((currentQuestion) / quizData.length) * 100;
-    document.getElementById("progress").style.width = percent + "%";
+function updateProgress(){
+    const percent=(currentQuestion/quizData.length)*100;
+    document.getElementById("progress").style.width=percent+"%";
 }
 
-function showScore() {
-    document.getElementById("quiz").style.display = "none";
-    const scoreDiv = document.getElementById("score");
-    const percentageDiv = document.getElementById("percentage");
-    scoreDiv.style.display = "block";
-    percentageDiv.style.display = "block";
-    const percent = Math.round((score / quizData.length) * 100);
-    scoreDiv.innerText = `You scored ${score} out of ${quizData.length}`;
-    percentageDiv.innerText = `Your performance: ${percent}%`;
+function showScore(){
+    document.getElementById("quiz").style.display="none";
+    const scoreDiv=document.getElementById("score");
+    const percDiv=document.getElementById("percentage");
+    scoreDiv.style.display="block";
+    percDiv.style.display="block";
+    const percent=Math.round((score/quizData.length)*100);
+    scoreDiv.innerText=`You scored ${score} out of ${quizData.length}`;
+    percDiv.innerText=`Your performance: ${percent}%`;
     showConfetti();
 }
 
-function showConfetti() {
-    const duration = 2000;
-    const end = Date.now() + duration;
-    (function frame() {
-        const colors = ['#3b82f6','#10b981','#facc15'];
-        const particle = document.createElement("div");
-        particle.style.position = "fixed";
-        particle.style.width = "8px";
-        particle.style.height = "8px";
-        particle.style.background = colors[Math.floor(Math.random()*colors.length)];
-        particle.style.top = Math.random()*100+"vh";
-        particle.style.left = Math.random()*100+"vw";
-        particle.style.opacity = "0.7";
-        particle.style.borderRadius = "50%";
+function showConfetti(){
+    const duration=2500;
+    const end=Date.now()+duration;
+    const colors=['#3b82f6','#10b981','#facc15'];
+    (function frame(){
+        const particle=document.createElement("div");
+        particle.style.position="fixed";
+        particle.style.width="8px";
+        particle.style.height="8px";
+        particle.style.background=colors[Math.floor(Math.random()*colors.length)];
+        particle.style.top=Math.random()*100+"vh";
+        particle.style.left=Math.random()*100+"vw";
+        particle.style.opacity="0.8";
+        particle.style.borderRadius="50%";
+        particle.style.zIndex="999";
         document.body.appendChild(particle);
-        setTimeout(()=>particle.remove(), 2000);
-        if (Date.now() < end) requestAnimationFrame(frame);
+        setTimeout(()=>particle.remove(),2000);
+        if(Date.now()<end) requestAnimationFrame(frame);
     })();
 }
 
-setTimeout(() => loadQuestion(), 2500);
+setTimeout(()=>loadQuestion(),2500);
 </script>
 </body>
 </html>
